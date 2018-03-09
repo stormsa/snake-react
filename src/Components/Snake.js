@@ -6,12 +6,16 @@ class Snake extends Component {
        super(props)
         this.state = ({
             right: window.innerWidth / 2,
-            top : window.innerHeight / 2,
+            top : window.innerHeight / 2 + 100,
             snakeHeight: 10,
             snakeSize: 100,
             body: [],
             gum : this.props.gum,
         })
+        this.topLimit = 350
+        this.widthLimit = 150
+        this.windowsHeight =  window.innerHeight - this.topLimit
+        this.windowsWidth = window.innerWidth - this.widthLimit
         this.walls = this.props.walls
         this.direction = "left"
         this.isGumCatched = this.isGumCatched.bind(this)
@@ -149,6 +153,21 @@ class Snake extends Component {
                 top: window.innerHeight - 100
             })
         }
+        // Is snake touch the direction window
+        let dWindowR = this.state.right - (window.innerWidth / 2 + 76)
+        let dWindowl = (window.innerWidth / 2 - 103) - this.state.right
+        let dheight = this.state.top - 200;
+        if(dheight > 0 && dheight < 150){
+            if(dWindowR > -1 && dWindowR < 11){
+                this.setState({
+                    right: window.innerWidth / 2 - 105
+                })
+            }else if(dWindowl > -1 && dWindowl < 11) {
+                this.setState({
+                    right: window.innerWidth / 2 + 80
+                })
+            }
+        }
     }
     isSnakeTouchWall(){
         for(let wall of this.walls){
@@ -186,7 +205,6 @@ class Snake extends Component {
         this.direction = props.direction;
         this.gum = props.gum
         this.newGame = props.newGame
-        console.log("Value of new game is"+props.newGame)
     }
     render() {
         const eachSnakeCase = function(body, i) {

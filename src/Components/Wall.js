@@ -9,7 +9,6 @@ class Wall extends Component {
             snakeRight: props.snakeRight,
             game: props.game
         })
-        this.color = "#5cb85c"
         this.update = this.update.bind(this)
     }
     update() {
@@ -24,7 +23,6 @@ class Wall extends Component {
         this.right = this.props.right
         this.height = this.props.height+"px"
         this.width = this.props.width+"px"
-        this.color = "#5cb85c"
 
     }
     componentWillUpdate(){
