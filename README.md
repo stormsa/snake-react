@@ -1,6 +1,8 @@
+
 # Snake-react
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) 
+
 
 Ceci est un jeu de snake développé en ReactJS
 
