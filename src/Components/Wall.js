@@ -1,54 +1,28 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import '../App.css';
 
-class Wall extends Component {
-    constructor(props){
-       super(props)
-        this.state = ({
-            snakeTop: props.snakeTop,
-            snakeRight: props.snakeRight,
-            game: props.game
-        })
-        this.update = this.update.bind(this)
-    }
-    update() {
-        console.log("index numero")
-        console.log(this.index)
-        this.props.onUpdate(this.index)
-    }
+const Wall = (width, height, right, top, color, bgcolor) => {
+    return(
+        <div className="wall" style={{
+            width: width,
+            height: height,
+            color:color,
+            backgroundColor: bgcolor,
+            position: "absolute",
+            right: right+"px",
+            top: top+"px"}}>
+        </div>
+    )
 
-    componentWillMount(){
-        this.index = this.props.index
-        this.top = this.props.top
-        this.right = this.props.right
-        this.height = this.props.height+"px"
-        this.width = this.props.width+"px"
-
-    }
-    componentWillUpdate(){
-
-    }
-    componentDidMount() {
-
-    }
-
-    componentDidUpdate(props){
-        this.color = this.props.color
-
-    }
-    render() {
-        return (
-            <div className="wall" style={{
-                width: this.width,
-                height: this.height,
-                color:this.color,
-                backgroundColor: this.color,
-                position: "absolute",
-                right: this.right+"px",
-                top: this.top+"px"}}>
-            </div>
-        );
-    }
 }
 
+Wall.propTypes = {
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
+    right: PropTypes.number.isRequired,
+    top: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired,
+    bgcolor: PropTypes.string.isRequired
+}
 export default Wall;
